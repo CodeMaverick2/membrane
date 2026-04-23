@@ -5,6 +5,8 @@ colorFrom: gray
 colorTo: green
 sdk: docker
 pinned: false
+license: mit
+short_description: OpenEnv channel-wise privacy and refusal scoring
 tags:
   - openenv
   - privacy
