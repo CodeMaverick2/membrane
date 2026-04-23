@@ -1,3 +1,16 @@
+---
+title: MembraneEnv
+emoji: shield
+colorFrom: gray
+colorTo: green
+sdk: docker
+pinned: false
+tags:
+  - openenv
+  - privacy
+  - multi-agent
+---
+
 # Membrane
 
 **Thesis:** train and score assistants on **channel-wise behavior** (who sees what) and **refusal under pressure**, not just the last line of text—because real failures hide in DMs and tool logs.
