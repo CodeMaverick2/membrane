@@ -1,6 +1,6 @@
 ---
 title: MembraneEnv
-emoji: shield
+emoji: 🛡️
 colorFrom: gray
 colorTo: green
 sdk: docker
