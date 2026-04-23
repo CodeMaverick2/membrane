@@ -1,0 +1,16 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+dist/
+*.egg-info/
+
+# Local env / logs
+.env
+.env.*
+*.log
+
+# Notebook checkpoints next to notebooks
+.ipynb_checkpoints/

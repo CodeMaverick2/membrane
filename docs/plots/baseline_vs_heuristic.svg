@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420">
+<rect width="100%" height="100%" fill="#0f1419"/>
+<text x="360" y="20" text-anchor="middle" fill="#e6edf3" font-size="15" font-family="system-ui,sans-serif">Membrane — baseline vs heuristic (local rollouts)</text>
+<text x="56" y="408" fill="#8b949e" font-size="12" font-family="system-ui,sans-serif">Episode index</text>
+<text transform="translate(16,200.0) rotate(-90)" text-anchor="middle" fill="#8b949e" font-size="12" font-family="system-ui,sans-serif">Mean episode return (Total)</text>
+<line x1="56" y1="372" x2="696" y2="372" stroke="#30363d"/>
+<line x1="56" y1="28" x2="56" y2="372" stroke="#30363d"/>
+<polyline fill="none" stroke="#f85149" stroke-width="2" points="56.0,324.0 83.8,324.0 111.7,324.0 139.5,324.0 167.3,324.0 195.1,324.0 223.0,324.0 250.8,324.0 278.6,324.0 306.4,324.0 334.3,324.0 362.1,324.0 389.9,324.0 417.7,324.0 445.6,324.0 473.4,324.0 501.2,324.0 529.0,324.0 556.9,324.0 584.7,324.0 612.5,324.0 640.3,324.0 668.2,324.0 696.0,324.0"/>
+<polyline fill="none" stroke="#3fb950" stroke-width="2" points="56.0,87.8 83.8,87.8 111.7,87.8 139.5,87.8 167.3,87.8 195.1,87.8 223.0,87.8 250.8,87.8 278.6,87.8 306.4,87.8 334.3,87.8 362.1,87.8 389.9,87.8 417.7,87.8 445.6,87.8 473.4,87.8 501.2,87.8 529.0,87.8 556.9,87.8 584.7,87.8 612.5,87.8 640.3,87.8 668.2,87.8 696.0,87.8"/>
+<text x="692" y="42" text-anchor="end" fill="#f85149" font-size="11" font-family="system-ui,sans-serif">baseline (5-ep mean)</text>
+<text x="692" y="58" text-anchor="end" fill="#3fb950" font-size="11" font-family="system-ui,sans-serif">heuristic (5-ep mean)</text>
+</svg>

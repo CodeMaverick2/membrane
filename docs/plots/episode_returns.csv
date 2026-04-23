@@ -1,0 +1,9 @@
+policy,episode,return
+baseline,0,0.44599999999999995
+baseline,1,0.44599999999999995
+baseline,2,0.44599999999999995
+baseline,3,0.44599999999999995
+heuristic,0,0.984
+heuristic,1,0.984
+heuristic,2,0.984
+heuristic,3,0.984
