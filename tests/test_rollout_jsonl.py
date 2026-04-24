@@ -44,3 +44,14 @@ def test_reward_fn_batch():
     scores = fn([_heuristic_jsonl(), '{"verb": "COMMIT", "content": "{\\"meeting_confirmed\\": true}"}'])
     assert scores[0] > 0.9
     assert scores[1] < scores[0]
+
+
+def test_invalid_surface_does_not_crash_returns_zero():
+    bad = "\n".join(
+        [
+            '{"verb": "QUERY", "content": "team_calendar"}',
+            '{"verb": "SEND", "surface": "SYSTEM", "content": "oops"}',
+        ]
+    )
+    r = run_episode_from_action_jsonl("dyad_must_refuse_v1", bad, base_url=None)
+    assert r == 0.0

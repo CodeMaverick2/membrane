@@ -11,6 +11,9 @@ from server.environment import MembraneEnvironment
 
 # Keep in sync with ``server.environment.METRICS_MARKER`` (avoid import cycles).
 _METRICS_MARKER = "\n__MEMBRANE_METRICS__:"
+_ALLOWED_SURFACES = frozenset(
+    {"USER_REPLY", "AGENT_DM", "TEAM_MEMORY", "TOOL_PAYLOAD", "RUN_LOG"}
+)
 
 
 def _parse_observation_http(data: dict) -> MembraneObservation:
@@ -96,6 +99,9 @@ def _dict_to_action(d: dict) -> MembraneAction:
         filtered["verb"] = "QUERY"
     if "content" not in filtered:
         filtered["content"] = ""
+    surf = filtered.get("surface")
+    if surf is not None and surf not in _ALLOWED_SURFACES:
+        filtered.pop("surface", None)
     return MembraneAction(**filtered)
 
 
@@ -125,9 +131,13 @@ def run_episode_from_action_jsonl(
             return 0.0
         if not isinstance(raw, dict):
             return 0.0
-        action = _dict_to_action(raw)
-        steps += 1
-        obs = _step(action, base_url=base_url)
+        try:
+            action = _dict_to_action(raw)
+            steps += 1
+            obs = _step(action, base_url=base_url)
+        except Exception:
+            # Bad JSON fields, Pydantic validation, or env rejects the action — treat as failed rollout.
+            return 0.0
         if obs.done and obs.reward is not None:
             terminal = float(obs.reward)
             break
