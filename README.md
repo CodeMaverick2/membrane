@@ -39,8 +39,6 @@ live environment — there is no LLM in the reward path.
 
 ## Links
 
-**Hugging Face Space git:** PNG files under `docs/` are not committed (SVG only) so `git push` to the Space is not blocked by the Hub binary hook. PNGs are still produced locally if you run the plot scripts. To commit PNGs to the Space anyway, use [git-xet](https://huggingface.co/docs/hub/xet).
-
 | | |
 |---|---|
 | **Source code (GitHub)** | <https://github.com/CodeMaverick2/membrane> |
