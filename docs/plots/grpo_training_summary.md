@@ -27,11 +27,8 @@ warm-start from this run's adapter.
 
 - `grpo_reward_curve.png` / `.svg` - reward curve.
 - `grpo_training_dashboard.png` / `.svg` - reward, KL/loss, completion length,
-  reward stability in one figure.
-- `grpo_loss_kl.png` / `.svg` - policy movement during training.
-- `grpo_completion_lengths.png` / `.svg` - completion lengths over time.
-- `grpo_reward_stability.png` / `.svg` - reward variance and the fraction of
-  GRPO groups with zero variance.
+  and reward stability in one figure (older separate line plots were removed as
+  duplicates of this dashboard).
 - `grpo_training_metrics.csv` - per-step metrics extracted from
   `trainer_state.json`.
 - `grpo_training_summary.json` - machine-readable copy of the numbers above.

@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_REPO = os.environ.get("MEMBRANE_RESULTS_REPO", "Tejasghatule/membrane-grpo-results")
 
 FILES = [
+    ROOT / "docs/plots/reviewer_results_overview.svg",
     ROOT / "docs/plots/eval_showcase_panels.svg",
     ROOT / "docs/plots/baseline_vs_heuristic.svg",
     ROOT / "docs/plots/grpo_warmstart_ablation.svg",
@@ -39,7 +40,7 @@ viewer: false
 
 # Membrane — GRPO results & eval
 
-**Figures (SVG):** [`showcase/`]({base}/tree/main/showcase)
+**Figures (SVG):** [`showcase/`]({base}/tree/main/showcase) — start with `reviewer_results_overview.svg`, then the full-size panels.
 
 **Artifacts:** `eval/`, `runs/`, `existing_run/` — browse in **Files**.
 
@@ -53,6 +54,7 @@ All files here are **SVG** (vector) plots from the Membrane repo.
 
 | File | What it shows |
 |------|-----------------|
+| `reviewer_results_overview.svg` | **One page:** panels A–D — trained eval scores, Colab hero reward curve, scripted policy floor, cold vs warm-start GRPO (same data as the larger plots below). |
 | `eval_showcase_panels.svg` | **Neural model:** same Qwen2.5 1.5B with LoRA **off** vs **on** — reward, valid JSONL rate, and COMMIT rate for four scenarios (plain-language labels). |
 | `baseline_vs_heuristic.svg` | **Scripted policies only** (not the neural net): weak baseline vs hand-tuned heuristic on the refuse-leak task — an upper bound for simple rules. |
 | `grpo_warmstart_ablation.svg` | **Training:** cold-start vs Colab hero vs warm-start GRPO curves. |

@@ -24,3 +24,6 @@ python3 scripts/analysis/replot_base_vs_trained.py
 # 4. Stacked eval figure + GRPO saturation evidence plot for README / Blog.
 python3 scripts/analysis/eval_showcase_plot.py
 python3 scripts/analysis/build_grpo_saturation_plot.py
+
+# 5. One-page composite for README / Blog / Hub showcase.
+python3 scripts/analysis/build_reviewer_overview.py

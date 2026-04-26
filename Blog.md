@@ -83,6 +83,12 @@ That cost about $8 of the $30 grant and produced no working model. It did,
 however, produce three perfectly clean curves of failure, which became
 useful evidence later.
 
+## Figures
+
+One page with the four main quantitative threads (eval, Colab training, scripted floor, cold vs warm-start). The same SVGs, including full-size panels, are in the Hub dataset [`showcase/`](https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results/tree/main/showcase).
+
+![Membrane results at a glance: panels A–D](docs/plots/reviewer_results_overview.svg)
+
 ## The Colab run that actually worked
 
 In parallel I'd been running the same training script in a Google Colab
@@ -215,7 +221,7 @@ to publish this.
 - **Source code:** <https://github.com/CodeMaverick2/membrane>
 - **Environment:** <https://huggingface.co/spaces/Tejasghatule/membrane-temp>
 - **Trained adapters:** <https://huggingface.co/Tejasghatule/membrane-qwen25-1p5b-grpo-lora>
-- **Training metrics & plots:** <https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results> — **Figures:** `showcase/` on that repo. Refresh from here: `HF_TOKEN=... python scripts/analysis/upload_showcase_to_hf_dataset.py`
+- **Training metrics & plots:** <https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results> — **Figures:** [`showcase/`](https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results/tree/main/showcase) (SVGs, same set as `docs/plots/` in the repo)
 - **Notebook (1000-step training run):** <https://colab.research.google.com/drive/1rEFKYNGbtoNZmClFDh8Q0aoeTdy7Xsrf?usp=sharing> — same script as `notebooks/membrane_train_colab.ipynb` in the repo
 
 If you'd like to extend this - new scenarios, different agents pushing

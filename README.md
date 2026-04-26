@@ -51,13 +51,18 @@ live environment — there is no LLM in the reward path.
 | Same notebook in this repo | [`notebooks/membrane_train_colab.ipynb`](notebooks/membrane_train_colab.ipynb) |
 | Warm-start ablation summary | [`docs/plots/grpo_warmstart_summary.md`](docs/plots/grpo_warmstart_summary.md) |
 | Trained-vs-base eval | [`docs/eval/base_vs_trained/base_vs_trained_summary.md`](docs/eval/base_vs_trained/base_vs_trained_summary.md) |
-| Results on the Hub (`showcase/`) | [`showcase/`](https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results/tree/main/showcase) — mirror of the SVGs below; refresh with `HF_TOKEN=... .venv/bin/python scripts/analysis/upload_showcase_to_hf_dataset.py` (not `git push`) |
+| Results on the Hub (`showcase/`) | [`showcase/`](https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results/tree/main/showcase) — same SVGs as [`docs/plots/`](docs/plots/) in this repo |
+
+## Results at a glance
+
+Four panels on one page (eval, Colab training run, scripted floor, cold vs warm-start). Full-size versions of each idea are in the numbered figures below and in the Hub [`showcase/`](https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results/tree/main/showcase).
+
+![Membrane results at a glance: panels A–D](docs/plots/reviewer_results_overview.svg)
 
 ## Results figures
 
-SVGs live in [`docs/plots/`](docs/plots/). The same bundle is on the Hub under
-[`showcase/`](https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results/tree/main/showcase)
-([membrane-grpo-results](https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results)); open that folder in **Files** on the dataset page.
+Key plots live in [`docs/plots/`](docs/plots/) and in the dataset
+[`showcase/`](https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results/tree/main/showcase).
 
 ### 1. Neural model: base vs trained (same Qwen, LoRA on/off)
 
@@ -271,12 +276,6 @@ python3 -m venv .venv
 .venv/bin/pip install pytest
 .venv/bin/python -m pytest tests/ -q
 .venv/bin/uvicorn server.app:app --host 127.0.0.1 --port 7860
-```
-
-Regenerate local comparison plots:
-
-```bash
-./scripts/refresh_plots.sh
 ```
 
 ## Repository layout
