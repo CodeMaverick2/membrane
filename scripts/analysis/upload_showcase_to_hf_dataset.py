@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Upload curated SVG figures to the HF dataset under showcase/.
 
-Hugging Face dataset viewer sometimes mis-classifies repos; a dedicated
-``showcase/`` folder with SVG figures + README makes comparisons obvious.
+Keeps ``showcase/`` on the Hub in sync with local ``docs/plots/`` (and related)
+SVGs; also writes the dataset root ``README.md`` (``viewer: false``) so the Hub
+uses the Files browser for this layout.
 
 Requires HF_TOKEN (or huggingface-cli login).
 
@@ -32,29 +33,27 @@ FILES = [
 
 
 def dataset_card_readme(repo: str) -> str:
-    """Root README for the Hub dataset: disables misleading auto-viewer."""
+    """Root README for the Hub dataset (viewer off for mixed artifact layout)."""
     base = f"https://huggingface.co/datasets/{repo}"
     return f"""---
 viewer: false
 ---
 
-# Membrane — GRPO results & eval (Hub dump)
+# Membrane — GRPO results & eval
 
-This repo mixes **checkpoints, CSVs, JSON, and plots** from training and eval jobs. Hugging Face’s **Dataset Viewer is turned off here** on purpose: the default image/table preview was picking up a handful of legacy PNGs and **did not match** the curated figures in `showcase/`.
+Training and evaluation artifacts: **checkpoints, CSVs, JSON, plots.** Browse with the **Files** tab.
 
-## Start here (curated figures)
+**Figures (SVG):** [`showcase/`]({base}/tree/main/showcase) — same bundle as in the Membrane repo’s `docs/plots/` workflow, plus a short `README.md` there.
 
-Open **`showcase/`** for **SVG** plots and a short legend:
+The **Dataset Viewer** is disabled here ([`viewer: false`](https://huggingface.co/docs/hub/datasets-viewer-configure)) because this repository is not structured as a single tabular split; that keeps the landing page on the dataset card and file tree instead of an auto-generated grid.
 
-- [{base}/tree/main/showcase]({base}/tree/main/showcase)
+## Layout
 
-## Everything else
+- **`eval/`** — eval CSVs, summaries, plot PNGs per job  
+- **`runs/`** — training runs (checkpoints, metrics, job uploads)  
+- **`existing_run/`** — reference export bundle  
 
-- **`eval/`** — per-job eval CSVs, summaries, and plot PNGs  
-- **`runs/`** — training runs (checkpoints, metrics, uploads from HF Jobs)  
-- **`existing_run/`** — reference bundle from an earlier export  
-
-Live demo Space: [Tejasghatule/membrane-temp](https://huggingface.co/spaces/Tejasghatule/membrane-temp)
+Demo Space: [Tejasghatule/membrane-temp](https://huggingface.co/spaces/Tejasghatule/membrane-temp)
 """
 
 

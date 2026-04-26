@@ -59,8 +59,7 @@ The SVGs below live in [`docs/plots/`](docs/plots/) in this repo. The
 [`showcase/`](https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results/tree/main/showcase)
 folder on [membrane-grpo-results](https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results)
 is the same files uploaded via the Hub API — **pushing to GitHub or the Space
-does not refresh the dataset.** The dataset repo’s **Dataset Viewer is disabled**
-([`viewer: false`](https://huggingface.co/docs/hub/datasets-viewer-configure) in the Hub `README.md`) so visitors are not shown a misleading auto-picked grid of legacy PNGs; open **Files → `showcase/`** from that page instead. Older Job uploads under `runs/*/plots/` stay as
+does not refresh the dataset.** On the Hub, the dataset README sets [`viewer: false`](https://huggingface.co/docs/hub/datasets-viewer-configure) so the default **Dataset Viewer** stays off (this tree is artifacts, not one tabular split); use **Files → `showcase/`** for the SVG bundle. Older Job uploads under `runs/*/plots/` stay as
 they are until you overwrite them with a new Job or delete them in the Hub UI.
 To refresh `showcase/` only:  
 `HF_TOKEN=... .venv/bin/python scripts/analysis/upload_showcase_to_hf_dataset.py`
