@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 """Upload curated SVG figures to the HF dataset under showcase/.
 
-Keeps ``showcase/`` on the Hub in sync with local ``docs/plots/`` (and related)
-SVGs; also writes the dataset root ``README.md`` (``viewer: false``) so the Hub
-uses the Files browser for this layout.
+Syncs ``showcase/`` + a short root ``README.md`` on the Hub results dataset.
 
 Requires HF_TOKEN (or huggingface-cli login).
 
@@ -33,7 +31,7 @@ FILES = [
 
 
 def dataset_card_readme(repo: str) -> str:
-    """Root README for the Hub dataset (viewer off for mixed artifact layout)."""
+    """Minimal Hub dataset README (viewer off: repo is not a tabular dataset)."""
     base = f"https://huggingface.co/datasets/{repo}"
     return f"""---
 viewer: false
@@ -41,19 +39,11 @@ viewer: false
 
 # Membrane — GRPO results & eval
 
-Training and evaluation artifacts: **checkpoints, CSVs, JSON, plots.** Browse with the **Files** tab.
+**Figures (SVG):** [`showcase/`]({base}/tree/main/showcase)
 
-**Figures (SVG):** [`showcase/`]({base}/tree/main/showcase) — same bundle as in the Membrane repo’s `docs/plots/` workflow, plus a short `README.md` there.
+**Artifacts:** `eval/`, `runs/`, `existing_run/` — browse in **Files**.
 
-The **Dataset Viewer** is disabled here ([`viewer: false`](https://huggingface.co/docs/hub/datasets-viewer-configure)) because this repository is not structured as a single tabular split; that keeps the landing page on the dataset card and file tree instead of an auto-generated grid.
-
-## Layout
-
-- **`eval/`** — eval CSVs, summaries, plot PNGs per job  
-- **`runs/`** — training runs (checkpoints, metrics, job uploads)  
-- **`existing_run/`** — reference export bundle  
-
-Demo Space: [Tejasghatule/membrane-temp](https://huggingface.co/spaces/Tejasghatule/membrane-temp)
+Space: [Tejasghatule/membrane-temp](https://huggingface.co/spaces/Tejasghatule/membrane-temp)
 """
 
 
@@ -88,7 +78,7 @@ def main() -> None:
         path_in_repo="README.md",
         repo_id=repo,
         repo_type="dataset",
-        commit_message="Dataset card: disable default viewer; link showcase/",
+        commit_message="Dataset README: showcase + layout",
     )
 
     api.upload_file(

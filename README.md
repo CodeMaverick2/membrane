@@ -51,18 +51,13 @@ live environment — there is no LLM in the reward path.
 | Same notebook in this repo | [`notebooks/membrane_train_colab.ipynb`](notebooks/membrane_train_colab.ipynb) |
 | Warm-start ablation summary | [`docs/plots/grpo_warmstart_summary.md`](docs/plots/grpo_warmstart_summary.md) |
 | Trained-vs-base eval | [`docs/eval/base_vs_trained/base_vs_trained_summary.md`](docs/eval/base_vs_trained/base_vs_trained_summary.md) |
-| Results on the Hub (`showcase/`) | [`showcase/`](https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results/tree/main/showcase) — optional mirror of `docs/plots/`; **not** updated by git push (run `scripts/analysis/upload_showcase_to_hf_dataset.py` with `HF_TOKEN`) |
+| Results on the Hub (`showcase/`) | [`showcase/`](https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results/tree/main/showcase) — mirror of the SVGs below; refresh with `HF_TOKEN=... .venv/bin/python scripts/analysis/upload_showcase_to_hf_dataset.py` (not `git push`) |
 
 ## Results figures
 
-The SVGs below live in [`docs/plots/`](docs/plots/) in this repo. The
+SVGs live in [`docs/plots/`](docs/plots/). The same bundle is on the Hub under
 [`showcase/`](https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results/tree/main/showcase)
-folder on [membrane-grpo-results](https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results)
-is the same files uploaded via the Hub API — **pushing to GitHub or the Space
-does not refresh the dataset.** On the Hub, the dataset README sets [`viewer: false`](https://huggingface.co/docs/hub/datasets-viewer-configure) so the default **Dataset Viewer** stays off (this tree is artifacts, not one tabular split); use **Files → `showcase/`** for the SVG bundle. Older Job uploads under `runs/*/plots/` stay as
-they are until you overwrite them with a new Job or delete them in the Hub UI.
-To refresh `showcase/` only:  
-`HF_TOKEN=... .venv/bin/python scripts/analysis/upload_showcase_to_hf_dataset.py`
+([membrane-grpo-results](https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results)); open that folder in **Files** on the dataset page.
 
 ### 1. Neural model: base vs trained (same Qwen, LoRA on/off)
 
