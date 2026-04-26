@@ -24,7 +24,11 @@ def main() -> None:
         for row in csv.DictReader(f):
             by_pol[row["policy"]].append(float(row["return"]))
 
-    plt.figure(figsize=(7, 4))
+    plt.figure(figsize=(8, 4.5))
+    labels = {
+        "baseline": "Weak scripted baseline (5-ep mean)",
+        "heuristic": "Hand-tuned scripted policy (5-ep mean)",
+    }
     for label, color in (("baseline", "#c0392b"), ("heuristic", "#27ae60")):
         vals = by_pol[label]
         xs = list(range(len(vals)))
@@ -34,17 +38,20 @@ def main() -> None:
             sum(vals[max(0, i - window + 1) : i + 1]) / (i - max(0, i - window + 1) + 1)
             for i in range(len(vals))
         ]
-        plt.plot(xs, smooth, color=color, label=f"{label} ({window}-ep mean)")
+        plt.plot(xs, smooth, color=color, label=labels[label])
 
     plt.xlabel("Episode index")
-    plt.ylabel("Episode return (Total)")
-    plt.title("Membrane - baseline vs heuristic (local rollouts)")
-    plt.legend()
+    plt.ylabel("Membrane episode score (0–1)")
+    plt.title("Scripted policies on the refuse-leak scenario (not the neural model)")
+    plt.legend(loc="lower right")
     plt.grid(True, alpha=0.25)
     out = _ROOT / "docs" / "plots" / "baseline_vs_heuristic.png"
+    out_svg = out.with_suffix(".svg")
     plt.tight_layout()
     plt.savefig(out, dpi=120)
-    print(f"Wrote {out}")
+    plt.savefig(out_svg, format="svg")
+    plt.close()
+    print(f"Wrote {out} and {out_svg}")
 
 
 if __name__ == "__main__":

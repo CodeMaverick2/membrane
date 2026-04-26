@@ -120,6 +120,13 @@ of them - slow learning, single task - actually **beat the hero**, ending
 at 0.971 and peaking at 0.988. A model with no help from human labels
 learned to do this task almost perfectly.
 
+Separately from the neural model, Membrane also supports **scripted**
+policies — a deliberately weak baseline versus a hand-tuned rule script on
+the refuse-leak scenario. That is not the GRPO learner; it is a sanity
+check that the environment score makes sense for simple behaviour:
+
+![Scripted weak baseline vs hand-tuned scripted policy (same scenario, not the neural net)](docs/plots/baseline_vs_heuristic.svg)
+
 ## The run that taught me the most
 
 The most interesting run is one that *didn't* keep improving. I gave it
@@ -134,9 +141,16 @@ already good at *every* problem, all the attempts at a given problem look
 the same - they all get the same score. There's no "better one" to point
 at. The signal disappears, and the model starts to wander.
 
-You can see this in the data: a metric called "fraction of zero-variance
-groups" climbs from 20% to over 70%. The gradient - the size of the
-update - falls to literally zero. The model isn't broken. It's bored.
+The logs for the aggressive single-task warm-start run
+(`continue_deep_seed_5823_lr5e-6`) spell this out in numbers. In
+`docs/hf_runs/continue_warm_start/continue_deep_seed_5823_lr5e-6/training_metrics.csv`,
+the column `frac_reward_zero_std` is the fraction of GRPO prompt groups where
+all four completions got the *same* reward, so the algorithm has nothing to
+prefer. It starts around **0.2** at step 20 and reaches **1.0** by step 780.
+In the same rows, `grad_norm` drops to **0.0** once the policy has stopped
+moving. The model is not broken; the optimiser has nothing left to do.
+
+![Same run: frac_reward_zero_std (orange) and grad_norm (blue) vs training step](docs/plots/grpo_aggressive_lr_saturation.svg)
 
 This is one of those failure modes you only spot if your environment is
 built honestly. If the grader had a softer scoring function, or a learned
@@ -152,6 +166,14 @@ itself with the same grader. Not enough.
 To check, I took the same 1.5B-parameter model and ran it twice on tasks
 it had never seen during training. Once with the trained adapter switched
 on, once with it switched off. Same weights underneath, same prompts.
+
+Here is the same comparison as **three stacked charts** (reward, then valid
+JSONL, then COMMIT). The hatched bars are the base model at **0.00** — that is
+not a missing baseline; it means the frozen Qwen never produces parseable
+Membrane actions, so the grader always returns zero. The green bars are what
+changes when you turn the trained LoRA on.
+
+![Base vs trained: three stacked bar charts, short scenario labels](docs/plots/eval_showcase_panels.svg)
 
 Without the adapter, the model produced no valid responses at all. It
 couldn't follow the action format. Score: zero, on every task.
@@ -193,7 +215,7 @@ to publish this.
 - **Source code:** <https://github.com/CodeMaverick2/membrane>
 - **Environment:** <https://huggingface.co/spaces/Tejasghatule/membrane-temp>
 - **Trained adapters:** <https://huggingface.co/Tejasghatule/membrane-qwen25-1p5b-grpo-lora>
-- **Training metrics & plots:** <https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results>
+- **Training metrics & plots:** <https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results> — optional **`showcase/`** folder (README + SVGs); updating it needs `HF_TOKEN=... python scripts/analysis/upload_showcase_to_hf_dataset.py` (git push alone does not sync the dataset)
 - **Notebook (1000-step training run):** <https://colab.research.google.com/drive/1rEFKYNGbtoNZmClFDh8Q0aoeTdy7Xsrf?usp=sharing> — same script as `notebooks/membrane_train_colab.ipynb` in the repo
 
 If you'd like to extend this - new scenarios, different agents pushing

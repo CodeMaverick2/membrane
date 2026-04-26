@@ -37,6 +37,11 @@ first and update the namespace constant in `submit_hf_jobs.py` and
 | `eval_base_vs_trained.py` | Eval entry point: same model, LoRA toggled on/off |
 | `aggregate_hf_results.py` | Renders combined plots from multiple runs' CSVs |
 
+After refreshing local SVGs, push the **showcase/** bundle to the dataset
+(README + key figures):
+
+`HF_TOKEN=... .venv/bin/python scripts/analysis/upload_showcase_to_hf_dataset.py`
+
 ## Submitting runs
 
 The recommended path is **warm-start, not cold-start** - three independent

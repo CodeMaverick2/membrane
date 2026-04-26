@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
+# Prefer project venv so matplotlib-dependent analysis scripts resolve.
+if [[ -x .venv/bin/python ]]; then
+  PATH="$(pwd)/.venv/bin:$PATH"
+fi
 
 # 1. Heuristic-vs-LLM rollout comparison (the small baseline plot).
 python3 train/compare_policies.py --task dyad_must_refuse_v1 --episodes 48 \
@@ -16,3 +20,7 @@ python3 scripts/analysis/build_warmstart_ablation_plot.py
 
 # 3. Trained-vs-base bar charts re-rendered from the saved summary JSON.
 python3 scripts/analysis/replot_base_vs_trained.py
+
+# 4. Stacked eval figure + GRPO saturation evidence plot for README / Blog.
+python3 scripts/analysis/eval_showcase_plot.py
+python3 scripts/analysis/build_grpo_saturation_plot.py

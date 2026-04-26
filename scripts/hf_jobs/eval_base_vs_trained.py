@@ -50,6 +50,13 @@ TASKS = [
     "dyad_must_refuse_long_v1",
     "triad_must_refuse_v1",
 ]
+# Plain-language x-axis labels (matches scripts/analysis/eval_showcase_plot.py)
+_EVAL_TASK_LABELS = {
+    "dyad_must_refuse_v1": "Refuse leak\n(training task)",
+    "dyad_must_comply_v1": "Comply\n(benign)",
+    "dyad_must_refuse_long_v1": "Refuse + 41\ndistractors",
+    "triad_must_refuse_v1": "Refuse + 2\nbots",
+}
 
 
 def clone_membrane(dst: Path) -> None:
@@ -254,21 +261,54 @@ def main() -> None:
         x = list(range(len(TASKS)))
         width = 0.38
         fig, ax = plt.subplots(figsize=(9, 4.6))
-        ax.bar([i - width / 2 for i in x], base_vals, width, label="base", color="#94a3b8")
-        ax.bar([i + width / 2 for i in x], trained_vals, width, label="trained", color="#0f766e")
+        ax.bar([i - width / 2 for i in x], base_vals, width, label="Base (LoRA off)", color="#94a3b8")
+        ax.bar([i + width / 2 for i in x], trained_vals, width, label="Trained (LoRA on)", color="#0f766e")
         ax.set_xticks(x)
-        ax.set_xticklabels([t.replace("_v1", "") for t in TASKS], rotation=15, ha="right")
+        ax.set_xticklabels([_EVAL_TASK_LABELS.get(t, t) for t in TASKS], fontsize=9)
         ax.set_ylim(0, 1.05)
         ax.set_ylabel(ylabel)
         ax.set_title(title)
         ax.legend()
         fig.tight_layout()
-        fig.savefig(plots_dir / fname)
+        p = plots_dir / fname
+        fig.savefig(p)
+        fig.savefig(p.with_suffix(".svg"), format="svg")
         plt.close(fig)
 
-    grouped_bar("mean_reward", "Mean Membrane reward", "Membrane Reward by Task - Base vs Trained", "reward_by_task.png")
-    grouped_bar("valid_jsonl_rate", "Fraction valid JSONL lines", "JSONL Validity - Base vs Trained", "valid_jsonl_by_task.png")
-    grouped_bar("commit_rate", "Fraction with COMMIT", "Commit Rate - Base vs Trained", "commit_rate_by_task.png")
+    grouped_bar(
+        "mean_reward",
+        "Mean Membrane reward (0-1)",
+        "Neural model: reward by scenario (same weights, LoRA toggled)",
+        "reward_by_task.png",
+    )
+    grouped_bar(
+        "valid_jsonl_rate",
+        "Valid Membrane JSONL (0-1)",
+        "Neural model: can it speak the action format?",
+        "valid_jsonl_by_task.png",
+    )
+    grouped_bar(
+        "commit_rate",
+        "Finished with COMMIT (0-1)",
+        "Neural model: did the episode complete?",
+        "commit_rate_by_task.png",
+    )
+
+    showcase_script = Path(__file__).resolve().parents[2] / "scripts" / "analysis" / "eval_showcase_plot.py"
+    r = subprocess.run(
+        [
+            sys.executable,
+            str(showcase_script),
+            "--summary",
+            str(out_dir / "base_vs_trained_summary.json"),
+            "--out",
+            str(plots_dir / "eval_showcase_panels.svg"),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    if r.returncode != 0:
+        print("eval_showcase_plot.py:", r.stderr or r.stdout)
 
     summary_md = ["# Base vs Trained Evaluation\n"]
     summary_md.append(f"- Checkpoint run: `{args.checkpoint_run}`")

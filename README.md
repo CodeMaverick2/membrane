@@ -51,6 +51,65 @@ live environment — there is no LLM in the reward path.
 | Same notebook in this repo | [`notebooks/membrane_train_colab.ipynb`](notebooks/membrane_train_colab.ipynb) |
 | Warm-start ablation summary | [`docs/plots/grpo_warmstart_summary.md`](docs/plots/grpo_warmstart_summary.md) |
 | Trained-vs-base eval | [`docs/eval/base_vs_trained/base_vs_trained_summary.md`](docs/eval/base_vs_trained/base_vs_trained_summary.md) |
+| Results on the Hub (`showcase/`) | [`showcase/`](https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results/tree/main/showcase) — optional mirror of `docs/plots/`; **not** updated by git push (run `scripts/analysis/upload_showcase_to_hf_dataset.py` with `HF_TOKEN`) |
+
+## Results figures
+
+The SVGs below live in [`docs/plots/`](docs/plots/) in this repo. The
+[`showcase/`](https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results/tree/main/showcase)
+folder on [membrane-grpo-results](https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results)
+is the same files uploaded via the Hub API — **pushing to GitHub or the Space
+does not refresh the dataset.** Older Job uploads under `runs/*/plots/` stay as
+they are until you overwrite them with a new Job or delete them in the Hub UI.
+To refresh `showcase/` only:  
+`HF_TOKEN=... .venv/bin/python scripts/analysis/upload_showcase_to_hf_dataset.py`
+
+### 1. Neural model: base vs trained (same Qwen, LoRA on/off)
+
+**Why are the base (LoRA off) bars at 0.00?** That is the honest floor for this
+evaluation: the frozen instruction-tuned Qwen does **not** emit valid Membrane
+JSONL (`verb` / `SEND` / `COMMIT` grammar), so every rollout fails grading.
+You are not supposed to read progress “against” a non-zero base line here — the
+**comparison is off → on** on the same weights. For a **non-zero scripted floor**
+on the same environment, see **figure 4** (hand-written policies, not the neural
+net). For **training progress**, see **figure 5** and the cold-start band vs the
+Colab hero / warm-start curves.
+
+Three **stacked** bar charts (less cramped than a single row of three): reward,
+then valid JSONL, then COMMIT. Hatched = LoRA off, solid green = trained.
+
+![Base vs trained: three stacked bar charts](docs/plots/eval_showcase_panels.svg)
+
+### 2. Colab hero run (mean reward over training steps)
+
+![GRPO mean reward vs step on the 1000-step Colab T4 run](docs/plots/grpo_reward_curve.svg)
+
+### 3. Training dashboard (reward, loss, KL, length)
+
+![Single-page training health for the Colab hero run](docs/plots/grpo_training_dashboard.svg)
+
+### 4. Scripted policies only (not the neural net)
+
+Two hand-written policies on the refuse-leak task: a weak baseline vs a
+strong heuristic. This is **not** the GRPO model; it shows how much signal
+the environment gives to simple rules before you add learning.
+
+![Weak scripted baseline vs hand-tuned scripted policy on the same scenario](docs/plots/baseline_vs_heuristic.svg)
+
+### 5. All GRPO training runs we logged (cold start, hero, warm-start)
+
+Already used in the table section below; repeated here for a one-stop view.
+
+![Cold-start band, Colab hero, warm-start ablations](docs/plots/grpo_warmstart_ablation.svg)
+
+### 6. GRPO “saturation” when the policy stops learning (logged metrics)
+
+Aggressive warm-start run `continue_deep_seed_5823_lr5e-6`: as more prompt groups
+produce identical rewards across completions, `frac_reward_zero_std` rises and
+`grad_norm` goes to zero. Source CSV:
+`docs/hf_runs/continue_warm_start/continue_deep_seed_5823_lr5e-6/training_metrics.csv`.
+
+![frac_reward_zero_std and grad_norm vs step for the aggressive warm-start run](docs/plots/grpo_aggressive_lr_saturation.svg)
 
 ## The problem
 

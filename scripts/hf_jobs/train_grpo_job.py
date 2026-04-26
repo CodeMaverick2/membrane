@@ -223,7 +223,9 @@ def render_run_plots(rows: list[dict[str, Any]], out_dir: Path, run_name: str) -
     ax.legend()
     fig.tight_layout()
     reward_path = out_dir / "reward_curve.png"
+    reward_svg = out_dir / "reward_curve.svg"
     fig.savefig(reward_path)
+    fig.savefig(reward_svg, format="svg")
     plt.close(fig)
 
     fig, axes = plt.subplots(1, 2, figsize=(11, 4))
@@ -237,7 +239,9 @@ def render_run_plots(rows: list[dict[str, Any]], out_dir: Path, run_name: str) -
     axes[1].set_ylabel("KL")
     fig.tight_layout()
     loss_kl_path = out_dir / "loss_kl.png"
+    loss_kl_svg = out_dir / "loss_kl.svg"
     fig.savefig(loss_kl_path)
+    fig.savefig(loss_kl_svg, format="svg")
     plt.close(fig)
 
     fig, ax = plt.subplots(figsize=(9, 4))
@@ -247,7 +251,9 @@ def render_run_plots(rows: list[dict[str, Any]], out_dir: Path, run_name: str) -
     ax.set_ylabel("Mean generated tokens")
     fig.tight_layout()
     length_path = out_dir / "completion_length.png"
+    length_svg = out_dir / "completion_length.svg"
     fig.savefig(length_path)
+    fig.savefig(length_svg, format="svg")
     plt.close(fig)
 
     best_idx = max(range(len(rewards)), key=lambda i: rewards[i])

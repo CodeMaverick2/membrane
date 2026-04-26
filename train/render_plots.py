@@ -64,9 +64,9 @@ def build_svg(
         polyline(wb, "#f85149"),
         polyline(wh, "#3fb950"),
         '<text x="' + str(pad_l + w - 4) + '" y="' + str(pad_t + 14) + '" text-anchor="end" '
-        'fill="#f85149" font-size="11" font-family="system-ui,sans-serif">baseline (5-ep mean)</text>',
+        'fill="#f85149" font-size="11" font-family="system-ui,sans-serif">Weak scripted baseline (5-ep mean)</text>',
         '<text x="' + str(pad_l + w - 4) + '" y="' + str(pad_t + 30) + '" text-anchor="end" '
-        'fill="#3fb950" font-size="11" font-family="system-ui,sans-serif">heuristic (5-ep mean)</text>',
+        'fill="#3fb950" font-size="11" font-family="system-ui,sans-serif">Hand-tuned scripted policy (5-ep mean)</text>',
         "</svg>",
     ]
     return "\n".join(lines)
@@ -90,7 +90,11 @@ def main() -> None:
     with args.csv.open(encoding="utf-8") as f:
         for row in csv.DictReader(f):
             by_pol[row["policy"]].append(float(row["return"]))
-    svg = build_svg(by_pol["baseline"], by_pol["heuristic"], "Membrane - baseline vs heuristic (local rollouts)")
+    svg = build_svg(
+        by_pol["baseline"],
+        by_pol["heuristic"],
+        "Scripted policies on the refuse-leak scenario (not the neural GRPO model)",
+    )
     args.out_svg.parent.mkdir(parents=True, exist_ok=True)
     args.out_svg.write_text(svg, encoding="utf-8")
     print(f"Wrote {args.out_svg}")

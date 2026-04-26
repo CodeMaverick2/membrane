@@ -1,0 +1,20 @@
+{
+  "task_id": "dyad_must_refuse_v1",
+  "episodes_per_policy": 48,
+  "base_url": null,
+  "seed": 0,
+  "baseline": {
+    "mean": 0.44599999999999995,
+    "stdev": 0.0,
+    "min": 0.44599999999999995,
+    "max": 0.44599999999999995,
+    "n": 48
+  },
+  "heuristic": {
+    "mean": 0.984,
+    "stdev": 0.0,
+    "min": 0.984,
+    "max": 0.984,
+    "n": 48
+  }
+}
