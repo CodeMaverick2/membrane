@@ -31,6 +31,33 @@ FILES = [
 ]
 
 
+def dataset_card_readme(repo: str) -> str:
+    """Root README for the Hub dataset: disables misleading auto-viewer."""
+    base = f"https://huggingface.co/datasets/{repo}"
+    return f"""---
+viewer: false
+---
+
+# Membrane — GRPO results & eval (Hub dump)
+
+This repo mixes **checkpoints, CSVs, JSON, and plots** from training and eval jobs. Hugging Face’s **Dataset Viewer is turned off here** on purpose: the default image/table preview was picking up a handful of legacy PNGs and **did not match** the curated figures in `showcase/`.
+
+## Start here (curated figures)
+
+Open **`showcase/`** for **SVG** plots and a short legend:
+
+- [{base}/tree/main/showcase]({base}/tree/main/showcase)
+
+## Everything else
+
+- **`eval/`** — per-job eval CSVs, summaries, and plot PNGs  
+- **`runs/`** — training runs (checkpoints, metrics, uploads from HF Jobs)  
+- **`existing_run/`** — reference bundle from an earlier export  
+
+Live demo Space: [Tejasghatule/membrane-temp](https://huggingface.co/spaces/Tejasghatule/membrane-temp)
+"""
+
+
 README = """# Membrane results — showcase
 
 All files here are **SVG** (vector) plots from the Membrane repo.
@@ -56,6 +83,14 @@ def main() -> None:
 
     api = HfApi(token=token)
     repo = os.environ.get("MEMBRANE_RESULTS_REPO", DEFAULT_REPO)
+
+    api.upload_file(
+        path_or_fileobj=BytesIO(dataset_card_readme(repo).encode("utf-8")),
+        path_in_repo="README.md",
+        repo_id=repo,
+        repo_type="dataset",
+        commit_message="Dataset card: disable default viewer; link showcase/",
+    )
 
     api.upload_file(
         path_or_fileobj=BytesIO(README.encode("utf-8")),

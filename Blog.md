@@ -215,7 +215,7 @@ to publish this.
 - **Source code:** <https://github.com/CodeMaverick2/membrane>
 - **Environment:** <https://huggingface.co/spaces/Tejasghatule/membrane-temp>
 - **Trained adapters:** <https://huggingface.co/Tejasghatule/membrane-qwen25-1p5b-grpo-lora>
-- **Training metrics & plots:** <https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results> — optional **`showcase/`** folder (README + SVGs); updating it needs `HF_TOKEN=... python scripts/analysis/upload_showcase_to_hf_dataset.py` (git push alone does not sync the dataset)
+- **Training metrics & plots:** <https://huggingface.co/datasets/Tejasghatule/membrane-grpo-results> — the Hub **Dataset Viewer is off** (this repo is a mixed artifact dump; the old auto image grid was misleading). Open **Files → `showcase/`** for SVGs + legend; refresh with `HF_TOKEN=... python scripts/analysis/upload_showcase_to_hf_dataset.py` (git push alone does not sync the dataset)
 - **Notebook (1000-step training run):** <https://colab.research.google.com/drive/1rEFKYNGbtoNZmClFDh8Q0aoeTdy7Xsrf?usp=sharing> — same script as `notebooks/membrane_train_colab.ipynb` in the repo
 
 If you'd like to extend this - new scenarios, different agents pushing
