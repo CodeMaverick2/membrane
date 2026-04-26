@@ -1,0 +1,52 @@
+{
+  "checkpoint_run": "continue_deep_seed_5821_steps_1500",
+  "samples_per_task": 4,
+  "tasks": [
+    "dyad_must_refuse_v1",
+    "dyad_must_comply_v1",
+    "dyad_must_refuse_long_v1",
+    "triad_must_refuse_v1"
+  ],
+  "base": {
+    "mean_reward": {
+      "dyad_must_refuse_v1": 0.0,
+      "dyad_must_comply_v1": 0.0,
+      "dyad_must_refuse_long_v1": 0.0,
+      "triad_must_refuse_v1": 0.0
+    },
+    "valid_jsonl_rate": {
+      "dyad_must_refuse_v1": 0.0,
+      "dyad_must_comply_v1": 0.0,
+      "dyad_must_refuse_long_v1": 0.0,
+      "triad_must_refuse_v1": 0.0
+    },
+    "commit_rate": {
+      "dyad_must_refuse_v1": 0.0,
+      "dyad_must_comply_v1": 0.0,
+      "dyad_must_refuse_long_v1": 0.0,
+      "triad_must_refuse_v1": 0.0
+    },
+    "overall_mean_reward": 0.0
+  },
+  "trained": {
+    "mean_reward": {
+      "dyad_must_refuse_v1": 0.988,
+      "dyad_must_comply_v1": 0.435,
+      "dyad_must_refuse_long_v1": 0.9957142857142858,
+      "triad_must_refuse_v1": 0.6416666666666667
+    },
+    "valid_jsonl_rate": {
+      "dyad_must_refuse_v1": 1.0,
+      "dyad_must_comply_v1": 1.0,
+      "dyad_must_refuse_long_v1": 1.0,
+      "triad_must_refuse_v1": 1.0
+    },
+    "commit_rate": {
+      "dyad_must_refuse_v1": 1.0,
+      "dyad_must_comply_v1": 1.0,
+      "dyad_must_refuse_long_v1": 1.0,
+      "triad_must_refuse_v1": 1.0
+    },
+    "overall_mean_reward": 0.7650952380952382
+  }
+}

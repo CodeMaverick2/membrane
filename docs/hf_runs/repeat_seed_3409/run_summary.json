@@ -1,0 +1,24 @@
+{
+  "run_name": "repeat_seed_3409",
+  "mode": "repeat",
+  "seed": 3409,
+  "max_steps": 900,
+  "latest_checkpoint": "checkpoint-900",
+  "base_model": "unsloth/Qwen2.5-1.5B-Instruct-bnb-4bit",
+  "tasks": [
+    "dyad_must_refuse_v1"
+  ],
+  "metrics": {
+    "first_reward": 0.005575000122189522,
+    "final_reward": 0.0,
+    "best_reward": 0.013600000366568565,
+    "best_step": 840
+  },
+  "artifacts": {
+    "training_metrics_csv": "training_metrics.csv",
+    "reward_curve": "plots/reward_curve.png",
+    "loss_kl": "plots/loss_kl.png",
+    "completion_length": "plots/completion_length.png",
+    "run_summary_md": "plots/run_summary.md"
+  }
+}

@@ -1,7 +1,7 @@
 [project]
 name = "membrane-env"
-version = "0.3.0"
-description = "OpenEnv environment: Membrane — privacy-aware multi-agent coordination"
+version = "0.3.1"
+description = "OpenEnv environment: Membrane - privacy-aware multi-agent coordination"
 requires-python = ">=3.10"
 dependencies = [
     "fastapi>=0.100.0",
@@ -16,6 +16,9 @@ dev = ["pytest>=7.0", "pytest-asyncio", "pyyaml>=6.0.0"]
 
 [project.scripts]
 server = "server.app:main"
+
+[project.urls]
+Repository = "https://github.com/CodeMaverick2/membrane"
 
 [build-system]
 requires = ["setuptools>=68"]

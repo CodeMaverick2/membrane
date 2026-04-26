@@ -90,7 +90,7 @@ def main() -> None:
     with args.csv.open(encoding="utf-8") as f:
         for row in csv.DictReader(f):
             by_pol[row["policy"]].append(float(row["return"]))
-    svg = build_svg(by_pol["baseline"], by_pol["heuristic"], "Membrane — baseline vs heuristic (local rollouts)")
+    svg = build_svg(by_pol["baseline"], by_pol["heuristic"], "Membrane - baseline vs heuristic (local rollouts)")
     args.out_svg.parent.mkdir(parents=True, exist_ok=True)
     args.out_svg.write_text(svg, encoding="utf-8")
     print(f"Wrote {args.out_svg}")

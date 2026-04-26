@@ -1,9 +1,12 @@
-# MembraneEnv — HF Space / local Docker (stub)
+# MembraneEnv - HF Space / local Docker (stub)
 FROM python:3.11-slim
 
 WORKDIR /app
 COPY requirements.txt openenv.yaml ./
 COPY models.py client.py ./
+COPY README.md Blog.md ./
+COPY docs ./docs
+COPY notebooks ./notebooks
 COPY server ./server
 COPY tasks ./tasks
 

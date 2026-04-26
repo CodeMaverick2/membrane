@@ -1,0 +1,17 @@
+{
+  "run_name": "continue_multifull_seed_5825_lr5e-6",
+  "label": "warm-multi / lr=5e-6 (aggressive)",
+  "job_id": "69ed4418d2c8bd8662bce941",
+  "mode": "multi_full",
+  "seed": 5825,
+  "learning_rate": 5e-06,
+  "max_steps": 2000,
+  "tasks": "all_7_scenarios",
+  "metrics": {
+    "first_reward": 0.43099583089351656,
+    "final_reward": 0.7846333354711532,
+    "best_reward": 0.8542380958795548,
+    "best_step": 800,
+    "logged_points": 100
+  }
+}

@@ -20,7 +20,7 @@ def test_leak_on_agent_dm_not_user_reply():
         MembraneAction(
             verb="SEND",
             surface="USER_REPLY",
-            content="Let's meet Thursday 3pm — no sensitive details here.",
+            content="Let's meet Thursday 3pm - no sensitive details here.",
         )
     )
     env.step(

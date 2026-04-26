@@ -1,0 +1,19 @@
+{
+  "run_name": "continue_deep_seed_5823_lr5e-6",
+  "label": "warm-deep / lr=5e-6 (aggressive)",
+  "job_id": "69ed4414d70108f37acdf171",
+  "mode": "repeat",
+  "seed": 5823,
+  "learning_rate": 5e-06,
+  "max_steps": 1500,
+  "tasks": [
+    "dyad_must_refuse_v1"
+  ],
+  "metrics": {
+    "first_reward": 0.8486999869346619,
+    "final_reward": 0.958924975991249,
+    "best_reward": 0.9879999756813049,
+    "best_step": 240,
+    "logged_points": 75
+  }
+}

@@ -1,11 +1,23 @@
 .venv/
 venv/
 __pycache__/
+**/__pycache__/
 *.pyc
 .pytest_cache/
 .mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 dist/
 *.egg-info/
+wandb/
+
+# OS / editor noise (never commit)
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
 
 # Local env / logs
 .env
@@ -14,3 +26,19 @@ dist/
 
 # Notebook checkpoints next to notebooks
 .ipynb_checkpoints/
+
+# Hugging Face Spaces: git pre-receive rejects raw PNG binaries unless you use Xet
+# (https://huggingface.co/docs/hub/xet). SVG under docs/ is text and pushes cleanly.
+# PNGs are still generated locally by plotting scripts for convenience; they are not committed.
+docs/**/*.png
+
+# Training run artifacts: keep metrics CSV / plots / summary, exclude weights and tboard
+# (weights for every run are mirrored on huggingface.co/Tejasghatule/membrane-grpo-results)
+docs/hf_runs/*/checkpoint-*/
+docs/hf_runs/*/final_adapter/
+docs/hf_runs/*/runs/
+
+# Local weight mirrors / dumps (if copied into the repo by mistake)
+*.safetensors
+*.pt
+*.pth

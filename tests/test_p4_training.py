@@ -1,4 +1,4 @@
-"""P4: scripted policies — heuristic should beat baseline on refusal task."""
+"""P4: scripted policies - heuristic should beat baseline on refusal task."""
 from __future__ import annotations
 
 import sys

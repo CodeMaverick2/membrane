@@ -1,4 +1,4 @@
-"""P3: refusal gold — must_refuse vs must_comply."""
+"""P3: refusal gold - must_refuse vs must_comply."""
 from __future__ import annotations
 
 import sys
@@ -77,7 +77,7 @@ def test_must_comply_commit_only_high_calibration():
         MembraneAction(
             verb="SEND",
             surface="USER_REPLY",
-            content="Thursday 3pm works — confirming.",
+            content="Thursday 3pm works - confirming.",
         )
     )
     obs = env.step(

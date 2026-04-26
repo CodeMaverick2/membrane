@@ -1,0 +1,27 @@
+{
+  "run_name": "multi_seed_3410",
+  "mode": "multi",
+  "seed": 3410,
+  "max_steps": 1400,
+  "latest_checkpoint": "checkpoint-1400",
+  "base_model": "unsloth/Qwen2.5-1.5B-Instruct-bnb-4bit",
+  "tasks": [
+    "dyad_must_refuse_v1",
+    "dyad_must_comply_v1",
+    "dyad_must_refuse_long_v1",
+    "triad_must_refuse_v1"
+  ],
+  "metrics": {
+    "first_reward": 0.007975000143051147,
+    "final_reward": 0.00806249976158142,
+    "best_reward": 0.04023333266377449,
+    "best_step": 180
+  },
+  "artifacts": {
+    "training_metrics_csv": "training_metrics.csv",
+    "reward_curve": "plots/reward_curve.png",
+    "loss_kl": "plots/loss_kl.png",
+    "completion_length": "plots/completion_length.png",
+    "run_summary_md": "plots/run_summary.md"
+  }
+}

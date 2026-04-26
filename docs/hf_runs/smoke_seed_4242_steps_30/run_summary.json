@@ -1,0 +1,24 @@
+{
+  "run_name": "smoke_seed_4242_steps_30",
+  "mode": "repeat",
+  "seed": 4242,
+  "max_steps": 30,
+  "latest_checkpoint": "checkpoint-30",
+  "base_model": "unsloth/Qwen2.5-1.5B-Instruct-bnb-4bit",
+  "tasks": [
+    "dyad_must_refuse_v1"
+  ],
+  "metrics": {
+    "first_reward": 0.005575000122189522,
+    "final_reward": 0.005575000122189522,
+    "best_reward": 0.005575000122189522,
+    "best_step": 20
+  },
+  "artifacts": {
+    "training_metrics_csv": "training_metrics.csv",
+    "reward_curve": "plots/reward_curve.png",
+    "loss_kl": "plots/loss_kl.png",
+    "completion_length": "plots/completion_length.png",
+    "run_summary_md": "plots/run_summary.md"
+  }
+}

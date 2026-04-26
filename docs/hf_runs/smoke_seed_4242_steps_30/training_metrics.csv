@@ -1,0 +1,2 @@
+step,epoch,reward_mean,reward_std,loss,kl,completion_mean_length
+20,0.078125,0.005575000122189522,0.011150000244379043,0.0172,,109.0125

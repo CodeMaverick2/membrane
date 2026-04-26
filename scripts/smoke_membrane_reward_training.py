@@ -7,7 +7,7 @@ Run from ``membrane/``:
   python3 scripts/smoke_membrane_reward_training.py --task triad_must_refuse_v1
 
 Prints mean reward over random perturbations of a good trajectory vs the good
-trajectory itself — sanity check before you wire ``make_membrane_reward_fn``
+trajectory itself - sanity check before you wire ``make_membrane_reward_fn``
 into TRL on Colab/GPU.
 """
 from __future__ import annotations

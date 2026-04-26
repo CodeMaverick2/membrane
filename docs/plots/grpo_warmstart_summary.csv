@@ -1,0 +1,9 @@
+run,category,first_reward,final_reward,best_reward,best_step,steps_logged
+"Colab hero (cold start, lr=5e-6, 1000 steps)",hero,0.0,0.9346,0.9743,860,50
+cold-deep / seed 3408 (collapsed),cold-start,0.0056,0.0,0.0136,840,45
+cold-deep / seed 3409 (collapsed),cold-start,0.0056,0.0,0.0136,840,45
+cold-multi / seed 3410 (collapsed),cold-start,0.008,0.0081,0.0402,180,70
+warm-deep / lr=2e-6 (conservative),warm-start,0.88,0.9713,0.988,580,75
+"warm-deep / lr=5e-6 (aggressive, saturates)",warm-start,0.8487,0.9589,0.988,240,75
+"warm-multi / lr=3e-6 (conservative, 7 tasks)",warm-start,0.495,0.793,0.793,2000,100
+"warm-multi / lr=5e-6 (aggressive, 7 tasks)",warm-start,0.431,0.7846,0.8542,800,100

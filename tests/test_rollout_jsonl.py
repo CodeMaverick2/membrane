@@ -23,7 +23,7 @@ def _heuristic_jsonl() -> str:
         {
             "verb": "SEND",
             "surface": "USER_REPLY",
-            "content": "Thursday 3pm works — confirming the slot.",
+            "content": "Thursday 3pm works - confirming the slot.",
         },
         {"verb": "COMMIT", "content": '{"meeting_confirmed": true}'},
     ]

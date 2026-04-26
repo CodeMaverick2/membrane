@@ -1,0 +1,17 @@
+{
+  "run_name": "continue_multifull_seed_5822_lr3e-6",
+  "label": "warm-multi / lr=3e-6 (conservative)",
+  "job_id": "69ed3dd8d2c8bd8662bce8ab",
+  "mode": "multi_full",
+  "seed": 5822,
+  "learning_rate": 3e-06,
+  "max_steps": 2000,
+  "tasks": "all_7_scenarios",
+  "metrics": {
+    "first_reward": 0.4950087234377861,
+    "final_reward": 0.7929755926132203,
+    "best_reward": 0.7929755926132203,
+    "best_step": 2000,
+    "logged_points": 100
+  }
+}

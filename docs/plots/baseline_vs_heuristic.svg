@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420">
 <rect width="100%" height="100%" fill="#0f1419"/>
-<text x="360" y="20" text-anchor="middle" fill="#e6edf3" font-size="15" font-family="system-ui,sans-serif">Membrane — baseline vs heuristic (local rollouts)</text>
+<text x="360" y="20" text-anchor="middle" fill="#e6edf3" font-size="15" font-family="system-ui,sans-serif">Membrane - baseline vs heuristic (local rollouts)</text>
 <text x="56" y="408" fill="#8b949e" font-size="12" font-family="system-ui,sans-serif">Episode index</text>
 <text transform="translate(16,200.0) rotate(-90)" text-anchor="middle" fill="#8b949e" font-size="12" font-family="system-ui,sans-serif">Mean episode return (Total)</text>
 <line x1="56" y1="372" x2="696" y2="372" stroke="#30363d"/>

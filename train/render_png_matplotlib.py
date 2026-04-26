@@ -38,7 +38,7 @@ def main() -> None:
 
     plt.xlabel("Episode index")
     plt.ylabel("Episode return (Total)")
-    plt.title("Membrane — baseline vs heuristic (local rollouts)")
+    plt.title("Membrane - baseline vs heuristic (local rollouts)")
     plt.legend()
     plt.grid(True, alpha=0.25)
     out = _ROOT / "docs" / "plots" / "baseline_vs_heuristic.png"

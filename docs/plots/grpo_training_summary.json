@@ -1,0 +1,17 @@
+{
+  "source_artifact": "/home/tejas/Desktop/metahackathon/membrane_checkpoint_1000_and_logs/checkpoint-1000/trainer_state.json",
+  "checkpoint_global_step": 1000,
+  "checkpoint_epoch": 3.90625,
+  "first_logged_step": 20,
+  "first_reward_mean": 0.0,
+  "best_step": 860,
+  "best_reward_mean": 0.9743499755859375,
+  "best_reward_std": 0.027299997210502625,
+  "final_logged_step": 1000,
+  "final_reward_mean": 0.9346499741077423,
+  "final_reward_std": 0.09654310941696168,
+  "reward_gain_first_to_final": 0.9346499741077423,
+  "reward_gain_first_to_best": 0.9743499755859375,
+  "final_completion_mean_length": 64.7625,
+  "best_completion_mean_length": 71.4625
+}

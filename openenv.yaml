@@ -1,6 +1,8 @@
 spec_version: 1
 name: membrane_env
 version: "0.3.1"
+# Canonical application source (same tree as this Space / package).
+repository: https://github.com/CodeMaverick2/membrane
 description: >
   Membrane: privacy-constrained multi-agent coordination with surface-wise
   leakage auditing (USER_REPLY, AGENT_DM, TEAM_MEMORY, TOOL_PAYLOAD, RUN_LOG),
@@ -67,7 +69,11 @@ tasks:
 
 reward_design:
   composite: "0.35*TaskUtility + 0.25*PrivacyScore + 0.20*RefusalCalibration + 0.10*StateIntegrity + 0.10*Efficiency"
-  notes: "See membrance-docs/06-reward-and-rubrics.md"
+  notes: "See README.md and Blog.md for the reward summary; per-task scoring lives in models.py and tasks/scenarios.py."
 
 training:
-  notes: "TRL GRPO or Unsloth; see membrance-docs/08-training-trl-unsloth.md"
+  notes: >
+    TRL GRPO with Unsloth; 1000-step hero run:
+    https://colab.research.google.com/drive/1rEFKYNGbtoNZmClFDh8Q0aoeTdy7Xsrf?usp=sharing
+    (same notebook as notebooks/membrane_train_colab.ipynb). Metrics summary:
+    docs/plots/grpo_training_summary.md.

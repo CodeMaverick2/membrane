@@ -136,7 +136,7 @@ def run_episode_from_action_jsonl(
             steps += 1
             obs = _step(action, base_url=base_url)
         except Exception:
-            # Bad JSON fields, Pydantic validation, or env rejects the action — treat as failed rollout.
+            # Bad JSON fields, Pydantic validation, or env rejects the action - treat as failed rollout.
             return 0.0
         if obs.done and obs.reward is not None:
             terminal = float(obs.reward)

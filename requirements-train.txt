@@ -1,6 +1,6 @@
 # PNG plots (local)
 matplotlib>=3.7.0
 
-# Colab / GPU training (install on Colab or CUDA machine; do not pin here — Unsloth tracks TRL)
+# Colab / GPU training (install on Colab or CUDA machine; do not pin here - Unsloth tracks TRL)
 #   pip install unsloth
 # Then use notebooks/membrane_train_colab.ipynb + train/unsloth_reward.py
